@@ -1,16 +1,17 @@
 'use strict'
 
-import React, { PropTypes } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
+import PropTypes from 'prop-types'
 
-const Audio = React.createClass({
+class Audio extends React.Component {
   play () {
     ReactDOM.findDOMNode(this).play()
-  },
+  }
 
   pause () {
     ReactDOM.findDOMNode(this).pause()
-  },
+  }
 
   getDefaultProps () {
     return {
@@ -19,11 +20,11 @@ const Audio = React.createClass({
       loop: false,
       preload: 'metadata'
     }
-  },
+  }
 
   componentWillMount () {
     this.props.onMount()
-  },
+  }
 
   componentDidMount () {
     const audio = ReactDOM.findDOMNode(this)
@@ -31,7 +32,7 @@ const Audio = React.createClass({
     audio.addEventListener('ended', onEnded)
     audio.addEventListener('pause', onPause)
     audio.addEventListener('playing', onPlaying)
-  },
+  }
 
   componentWillUnmount () {
     const audio = ReactDOM.findDOMNode(this)
@@ -40,14 +41,14 @@ const Audio = React.createClass({
     audio.removeEventListener('pause', onPause)
     audio.removeEventListener('playing', onPlaying)
     onUnmount()
-  },
+  }
 
   componentDidUpdate (prevProps) {
     if (this.props.command !== 'none' && this.props.command !== prevProps.command) {
       this[this.props.command]()
       this.props.onCommand(this.props.command);
     }
-  },
+  }
 
   render () {
     const { autoPlay, controls, loop, preload, src } = this.props
@@ -61,23 +62,23 @@ const Audio = React.createClass({
         src={src}
       />
     )
-  },
-
-  propTypes: {
-    autoPlay: PropTypes.bool,
-    command: PropTypes.oneOf(['play', 'pause', 'none']).isRequired,
-    controls: PropTypes.bool,
-    loop: PropTypes.bool,
-    onEnded: PropTypes.func.isRequired,
-    onMount: PropTypes.func.isRequired,
-    onPause: PropTypes.func.isRequired,
-    onPlaying: PropTypes.func.isRequired,
-    onUnmount: PropTypes.func.isRequired,
-    onCommand: PropTypes.func.isRequired,
-    preload: PropTypes.oneOf(['none', 'metadata', 'auto']),
-    src: PropTypes.string.isRequired,
-    uniqueId: PropTypes.string.isRequired
   }
-})
+}
+
+Audio.propTypes = {
+  autoPlay: PropTypes.bool,
+  command: PropTypes.oneOf(['play', 'pause', 'none']).isRequired,
+  controls: PropTypes.bool,
+  loop: PropTypes.bool,
+  onEnded: PropTypes.func.isRequired,
+  onMount: PropTypes.func.isRequired,
+  onPause: PropTypes.func.isRequired,
+  onPlaying: PropTypes.func.isRequired,
+  onUnmount: PropTypes.func.isRequired,
+  onCommand: PropTypes.func.isRequired,
+  preload: PropTypes.oneOf(['none', 'metadata', 'auto']),
+  src: PropTypes.string.isRequired,
+  uniqueId: PropTypes.string.isRequired
+}
 
 export default Audio

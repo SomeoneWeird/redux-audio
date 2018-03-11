@@ -48,6 +48,7 @@
     "react-redux": "^4.0.0"
   },
   "dependencies": {
-    "immutable": "^3.8.1"
+    "immutable": "^3.8.1",
+    "prop-types": "^15.6.1"
   }
 }
