@@ -60,7 +60,7 @@ String. Required. A unique identifier for the component. Must be unique with res
 
 ## Redux Store
 
-The reducer provided attaches a single object to the main store object via the `audio` property. This object is an instance of [immutable's](https://facebook.github.io/immutable-js/) `Map` class. Each `Audio` component's state is accessible by calling `state.audio.get('uniqueId')` where `uniqueId` corresponds to the `uniqueId` prop passed to the `Audio` component. `Audio` components' state objects are added when the component is mounted and removed when the component unmounts.  Each `Audio` component's state is represented further by another `Map` object. This `Map` has the following keys:
+The reducer provided attaches a single object to the main store object via the `audio` property. Each `Audio` component's state is accessible by doing `state.audio[uniqueId]` where `uniqueId` corresponds to the `uniqueId` prop passed to the `Audio` component. `Audio` components' state objects are added when the component is mounted and removed when the component unmounts.  Each `Audio` component's state is represented further by another object. This has the following keys:
 
 ### command
 

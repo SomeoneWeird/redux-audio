@@ -2,64 +2,83 @@
 
 require('babel-core/register')
 require('babel-polyfill')
-const describe = require('mocha-sugar-free').describe
-const it = require('mocha-sugar-free').it
-const expect = require('chai').expect
+
+const assert = require('assert')
+
 const { audioPlay, audioPlaying, audioPause, audioPaused, audioEnded,
         audioRegister, audioUnregister, audioSrc, audioCommand } = require('../src/actions')
 
 describe('actions', () => {
   describe('audioPlay', () => {
     it('returns an object with id and type', () => {
-      expect(audioPlay('id')).to.eql({type: '@@redux-audio/PLAY', id: 'id'})
+      const result = audioPlay('id')
+      assert.equal(result.type, '@@redux-audio/PLAY')
+      assert.equal(result.id, 'id')
     })
   })
 
   describe('audioPlaying', () => {
     it('returns an object with id and type', () => {
-      expect(audioPlaying('id')).to.eql({type: '@@redux-audio/PLAYING', id: 'id'})
+      const result = audioPlaying('id')
+      assert.equal(result.type, '@@redux-audio/PLAYING')
+      assert.equal(result.id, 'id')
     })
   })
 
   describe('audioPause', () => {
     it('returns an object with id and type', () => {
-      expect(audioPause('id')).to.eql({type: '@@redux-audio/PAUSE', id: 'id'})
+      const result = audioPause('id')
+      assert.equal(result.type, '@@redux-audio/PAUSE')
+      assert.equal(result.id, 'id')
     })
   })
 
   describe('audioPaused', () => {
     it('returns an object with id and type', () => {
-      expect(audioPaused('id')).to.eql({type: '@@redux-audio/PAUSED', id: 'id'})
+      const result = audioPaused('id')
+      assert.equal(result.type, '@@redux-audio/PAUSED')
+      assert.equal(result.id, 'id')
     })
   })
 
   describe('audioEnded', () => {
     it('returns an object with id and type', () => {
-      expect(audioEnded('id')).to.eql({type: '@@redux-audio/ENDED', id: 'id'})
+      const result = audioEnded('id')
+      assert.equal(result.type, '@@redux-audio/ENDED')
+      assert.equal(result.id, 'id')
     })
   })
 
   describe('audioRegister', () => {
     it('returns an object with id and type', () => {
-      expect(audioRegister('id')).to.eql({type: '@@redux-audio/REGISTER', id: 'id'})
+      const result = audioRegister('id')
+      assert.equal(result.type, '@@redux-audio/REGISTER')
+      assert.equal(result.id, 'id')
     })
   })
 
   describe('audioUnregister', () => {
     it('returns an object with id and type', () => {
-      expect(audioUnregister('id')).to.eql({type: '@@redux-audio/UNREGISTER', id: 'id'})
+      const result = audioUnregister('id')
+      assert.equal(result.type, '@@redux-audio/UNREGISTER')
+      assert.equal(result.id, 'id')
     })
   })
 
   describe('audioSrc', () => {
     it('returns an object with id, type, and src', () => {
-      expect(audioSrc('id', 'src')).to.eql({type: '@@redux-audio/SRC', id: 'id', src: 'src'})
+      const result = audioSrc('id', 'src')
+      assert.equal(result.type, '@@redux-audio/SRC')
+      assert.equal(result.id, 'id')
+      assert.equal(result.src, 'src')
     })
   })
 
   describe('audioCommand', () => {
     it('returns an object with id and type', () => {
-      expect(audioCommand('id')).to.eql({type: '@@redux-audio/COMMAND', id: 'id'})
+      const result = audioCommand('id')
+      assert.equal(result.type, '@@redux-audio/COMMAND')
+      assert.equal(result.id, 'id')
     })
   })
 })
