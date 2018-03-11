@@ -5,7 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=\"test\" mocha --compilers js:babel-register",
-    "build": "rimraf lib && babel ./src -d lib"
+    "build": "rimraf lib && babel ./src -d lib",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
