@@ -1,6 +1,6 @@
 {
-  "name": "redux-audio",
-  "version": "1.0.0",
+  "name": "redux-audio-fixed",
+  "version": "1.1.0",
   "description": "Redux bindings for HTML5 audio elements",
   "main": "lib/index.js",
   "scripts": {
