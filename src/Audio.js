@@ -28,18 +28,22 @@ class Audio extends React.Component {
 
   componentDidMount () {
     const audio = ReactDOM.findDOMNode(this)
-    const { onEnded, onPause, onPlaying } = this.props
+    const { onEnded, onPause, onPlaying, onLoadedMetadata, onLoadedData } = this.props
     audio.addEventListener('ended', onEnded)
     audio.addEventListener('pause', onPause)
     audio.addEventListener('playing', onPlaying)
+    audio.addEventListener('loadedmetadata', onLoadedMetadata)
+    audio.addEventListener('loadeddata', onLoadedData)
   }
 
   componentWillUnmount () {
     const audio = ReactDOM.findDOMNode(this)
-    const { onEnded, onPause, onPlaying, onUnmount } = this.props
+    const { onEnded, onPause, onPlaying, onLoadedMetadata, onLoadedData, onUnmount } = this.props
     audio.removeEventListener('ended', onEnded)
     audio.removeEventListener('pause', onPause)
     audio.removeEventListener('playing', onPlaying)
+    audio.removeEventListener('loadedmetadata', onLoadedMetadata)
+    audio.removeEventListener('loadeddata', onLoadedData)
     onUnmount()
   }
 
